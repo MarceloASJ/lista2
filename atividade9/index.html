@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Agenda de Contatos</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Agenda de Contatos</h1>
+
+        <!-- Seção de Cadastro -->
+        <div class="secao-cadastro">
+            <h2>Adicionar Novo Contato</h2>
+            <div class="grupo-formulario">
+                <input type="text" id="inputNome" placeholder="Nome completo...">
+                <input type="text" id="inputTelefone" placeholder="Telefone...">
+                <input type="email" id="inputEmail" placeholder="E-mail...">
+                <button id="btnAdicionar">Cadastrar</button>
+            </div>
+        </div>
+
+        <hr class="divisor">
+
+        <!-- Seção de Pesquisa -->
+        <div class="secao-busca">
+            <h2>Pesquisar Contato</h2>
+            <div class="grupo-formulario-linha">
+                <input type="text" id="inputBusca" placeholder="Pesquisar por nome...">
+                <button id="btnBuscar">Buscar</button>
+                <button id="btnLimparBusca" class="btn-secundario">Limpar</button>
+            </div>
+        </div>
+
+        <hr class="divisor">
+
+        <!-- Seção de Listagem -->
+        <div class="secao-lista">
+            <h2>Contatos Cadastrados</h2>
+            <ul id="listaContatos"></ul>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

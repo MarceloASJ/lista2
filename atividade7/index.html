@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Catálogo de Filmes</title>
+    <style>
+        * {
+          margin: 0;
+          padding: 0;
+          box-sizing: border-box;
+          font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+          background-color: #f0f2f5;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          min-height: 100vh;
+          padding: 20px;
+        }
+
+        .container {
+          background-color: #ffffff;
+          width: 100%;
+          max-width: 500px;
+          padding: 30px;
+          border-radius: 12px;
+          box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+        }
+
+        h1 {
+          font-size: 1.5rem;
+          color: #1d3557;
+          text-align: center;
+          margin-bottom: 20px;
+        }
+
+        h2 {
+          font-size: 1.1rem;
+          color: #457b9d;
+          margin-bottom: 10px;
+        }
+
+        .grupo-formulario {
+          display: flex;
+          gap: 10px;
+          margin-bottom: 15px;
+        }
+
+        input {
+          flex: 1;
+          padding: 10px;
+          border: 1px solid #ccc;
+          border-radius: 6px;
+          font-size: 1rem;
+        }
+
+        input:focus {
+          outline: none;
+          border-color: #1d3557;
+        }
+
+        button {
+          background-color: #1d3557;
+          color: white;
+          border: none;
+          padding: 10px 20px;
+          font-size: 0.95rem;
+          font-weight: bold;
+          border-radius: 6px;
+          cursor: pointer;
+          transition: background-color 0.2s ease;
+        }
+
+        button:hover {
+          background-color: #457b9d;
+        }
+
+        .divisor {
+          border: 0;
+          height: 1px;
+          background-color: #e0e0e0;
+          margin: 20px 0;
+        }
+
+        .resultado-busca {
+          padding: 10px;
+          background-color: #f1faee;
+          color: #1d3557;
+          border: 1px solid #a8dadc;
+          border-radius: 6px;
+          font-size: 0.95rem;
+        }
+
+        .nao-encontrado {
+          background-color: #ffe5e5 !important;
+          color: #d90429 !important;
+          border-color: #ffb3b3 !important;
+        }
+
+        ul {
+          list-style-type: none;
+          padding: 0;
+        }
+
+        ul li {
+          background-color: #f8f9fa;
+          padding: 10px 15px;
+          border: 1px solid #eee;
+          border-radius: 6px;
+          margin-bottom: 8px;
+          font-size: 0.95rem;
+          color: #333;
+        }
+
+        .oculto {
+          display: none;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h1>Catálogo de Filmes</h1>
+
+        <!-- Seção de Pesquisa -->
+        <div class="secao-busca">
+            <h2>Pesquisar Filme</h2>
+            <div class="grupo-formulario">
+                <input type="text" id="inputBusca" placeholder="Digite o nome do filme...">
+                <button id="btnPesquisar">Buscar</button>
+            </div>
+            <div id="resultadoBusca" class="resultado-busca oculto"></div>
+        </div>
+
+        <hr class="divisor">
+
+        <!-- Seção para Adicionar Filme -->
+        <div class="secao-adicionar">
+            <h2>Adicionar Novo Filme</h2>
+            <div class="grupo-formulario">
+                <input type="text" id="inputNovoFilme" placeholder="Nome do novo filme...">
+                <button id="btnAdicionar">Adicionar</button>
+            </div>
+        </div>
+
+        <hr class="divisor">
+
+        <!-- Lista de Filmes Cadastrados -->
+        <div class="secao-lista">
+            <h2>Filmes Cadastrados</h2>
+            <ul id="listaFilmes"></ul>
+        </div>
+    </div>
+
+    <script>
+        // Array inicial com pelo menos cinco títulos de filmes
+        let filmes = [
+            'O Poderoso Chefão',
+            'Interestelar',
+            'Matrix',
+            'A Origem',
+            'Vingadores: Ultimato'
+        ];
+
+        const inputBusca = document.getElementById('inputBusca');
+        const btnPesquisar = document.getElementById('btnPesquisar');
+        const divResultadoBusca = document.getElementById('resultadoBusca');
+
+        const inputNovoFilme = document.getElementById('inputNovoFilme');
+        const btnAdicionar = document.getElementById('btnAdicionar');
+        const listaFilmes = document.getElementById('listaFilmes');
+
+        // Função para atualizar a lista na tela
+        function renderizarLista() {
+            listaFilmes.innerHTML = '';
+            filmes.forEach(filme => {
+                const li = document.createElement('li');
+                li.textContent = filme;
+                listaFilmes.appendChild(li);
+            });
+        }
+
+        // Inicializa a lista ao carregar a página
+        renderizarLista();
+
+        // Pesquisa de filmes
+        btnPesquisar.addEventListener('click', function() {
+            const termoBusca = inputBusca.value.trim().toLowerCase();
+            divResultadoBusca.classList.remove('oculto');
+
+            if (termoBusca === '') {
+                divResultadoBusca.textContent = 'Por favor, digite o nome de um filme para pesquisar.';
+                divResultadoBusca.classList.add('nao-encontrado');
+                return;
+            }
+
+            const filmesEncontrados = filmes.filter(filme => 
+                filme.toLowerCase().includes(termoBusca)
+            );
+
+            if (filmesEncontrados.length > 0) {
+                divResultadoBusca.classList.remove('nao-encontrado');
+                divResultadoBusca.textContent = `Filme(s) encontrado(s): ${filmesEncontrados.join(', ')}`;
+            } else {
+                divResultadoBusca.classList.add('nao-encontrado');
+                divResultadoBusca.textContent = 'Filme não encontrado no catálogo.';
+            }
+        });
+
+        // Adicionar novo filme usando push()
+        btnAdicionar.addEventListener('click', function() {
+            const novoFilme = inputNovoFilme.value.trim();
+
+            if (novoFilme !== '') {
+                filmes.push(novoFilme); // Adiciona ao array
+                inputNovoFilme.value = ''; // Limpa o campo de texto
+                renderizarLista(); // Atualiza a exibição na tela
+                
+                divResultadoBusca.classList.add('oculto');
+                alert(`Filme "${novoFilme}" adicionado com sucesso!`);
+            } else {
+                alert('Digite o nome do filme antes de adicionar.');
+            }
+        });
+    </script>
+</body>
+</html>

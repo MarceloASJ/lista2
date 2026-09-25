@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Carrinho de Compras Simplificado</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div class="container">
+        <h1>Carrinho de Compras</h1>
+
+        <!-- Seção: Cadastrar Novo Produto no Catálogo -->
+        <div class="secao-cadastro">
+            <h2>Cadastrar Novo Produto</h2>
+            <div class="grupo-formulario">
+                <input type="text" id="inputNomeProduto" placeholder="Nome do produto...">
+                <input type="number" id="inputPrecoProduto" placeholder="Preço (R$)" step="any" style="max-width: 130px;">
+                <button id="btnCadastrar">Cadastrar</button>
+            </div>
+        </div>
+
+        <hr class="divisor">
+
+        <!-- Seção: Catálogo Disponível -->
+        <div class="secao-catalogo">
+            <h2>Produtos Disponíveis</h2>
+            <div id="gradeCatalogo" class="grade-produtos"></div>
+        </div>
+
+        <hr class="divisor">
+
+        <!-- Seção: Carrinho de Compras -->
+        <div class="secao-carrinho">
+            <h2>Itens no Carrinho</h2>
+            <ul id="listaCarrinho"></ul>
+            <div id="totalCarrinho" class="total-carrinho">Total: R$ 0,00</div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

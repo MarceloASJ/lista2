@@ -1,0 +1,101 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+  background-color: #f4f6f8;
+  color: #333;
+  padding: 40px 20px;
+}
+
+.container {
+  max-width: 850px;
+  margin: 0 auto;
+  background-color: #fff;
+  padding: 30px;
+  border-radius: 12px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+}
+
+header {
+  text-align: center;
+  margin-bottom: 30px;
+  border-bottom: 2px solid #eaeaea;
+  padding-bottom: 20px;
+}
+
+header h1 {
+  color: #e63946;
+  font-size: 2rem;
+  margin-bottom: 8px;
+}
+
+header p {
+  color: #666;
+  font-size: 1rem;
+}
+
+.categoria {
+  margin-bottom: 30px;
+}
+
+.categoria h2, .cardapio-tabela h2 {
+  font-size: 1.2rem;
+  color: #1d3557;
+  margin-bottom: 12px;
+}
+
+.lista-categorias {
+  display: flex;
+  gap: 12px;
+  list-style-type: none;
+  flex-wrap: wrap;
+}
+
+.lista-categorias li {
+  background-color: #f1faee;
+  color: #1d3557;
+  padding: 8px 16px;
+  border-radius: 20px;
+  font-weight: bold;
+  font-size: 0.9rem;
+  border: 1px solid #a8dadc;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  text-align: left;
+  overflow: hidden;
+  border-radius: 8px;
+}
+
+th, td {
+  padding: 12px 15px;
+  border-bottom: 1px solid #e0e0e0;
+}
+
+th {
+  background-color: #1d3557;
+  color: white;
+  font-size: 0.95rem;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+/* Aplica o hover apenas nas linhas que NÃO são de secção */
+tr:not(.secao-linha):hover td {
+  background-color: #f8f9fa;
+}
+
+.secao-linha td {
+  background-color: #457b9d;
+  color: white;
+  font-weight: bold;
+  text-transform: uppercase;
+  font-size: 0.85rem;
+  letter-spacing: 1px;
+}
