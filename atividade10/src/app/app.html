@@ -1,0 +1,22 @@
+<div style="padding: 20px; font-family: sans-serif;">
+  <h1>Lista de Tarefas (Angular)</h1>
+
+  <div style="margin-bottom: 20px;">
+    <input type="text" [(ngModel)]="novaTarefaTexto" placeholder="Digite uma nova tarefa..." (keyup.enter)="adicionarTarefa()" style="padding: 8px; width: 250px;">
+    <button (click)="adicionarTarefa()" style="padding: 8px 15px; margin-left: 10px; cursor: pointer;">Adicionar</button>
+  </div>
+
+  <div>
+    @if (tarefas.length === 0) {
+      <p>Nenhuma tarefa cadastrada.</p>
+    } @else {
+      @for (t of tarefas; track t.id) {
+        <app-task-card 
+          [tarefa]="t" 
+          (aoAlterar)="alternarStatus($event)"
+          (aoRemover)="removerTarefa($event)">
+        </app-task-card>
+      }
+    }
+  </div>
+</div>

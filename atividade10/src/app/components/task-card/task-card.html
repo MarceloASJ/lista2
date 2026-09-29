@@ -1,0 +1,12 @@
+<div style="border: 1px solid #ccc; padding: 15px; margin-bottom: 10px; display: flex; justify-content: space-between; align-items: center; max-width: 420px; border-radius: 8px; background-color: #f9f9f9;" 
+     [ngStyle]="{'text-decoration': tarefa.concluida ? 'line-through' : 'none', 'opacity': tarefa.concluida ? '0.6' : '1'}">
+  <span style="font-size: 16px;">{{ tarefa.titulo }}</span>
+  <div>
+    <button (click)="alterar()" style="margin-right: 8px; cursor: pointer; padding: 5px 10px;">
+      {{ tarefa.concluida ? 'Desfazer' : 'Concluir' }}
+    </button>
+    <button (click)="remover()" style="cursor: pointer; padding: 5px 10px; background-color: #ff4c4c; color: white; border: none; border-radius: 4px;">
+      Excluir
+    </button>
+  </div>
+</div>
